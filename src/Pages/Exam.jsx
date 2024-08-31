@@ -91,19 +91,24 @@ const ExamPage = () => {
 
   return (
     <Layout>
-      <div className="exam-page  min-h-screen p-8">
-        <div className="max-w-4xl mx-auto  shadow-lg rounded-lg p-6">
-          <h1 className="text-3xl font-bold text-center text-indigo-600 mb-8">
+      <div className="exam-page min-h-screen  sm:p-8">
+        <div className="max-w-4xl mx-auto shadow-lg rounded-lg p-4 sm:p-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-6 sm:mb-8">
             {exam.title}
           </h1>
-          <h2 className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-600 text-xl font-semibold py-2 px-4 rounded-full shadow-lg z-50">
+          <h2 className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-100 text-red-600 text-lg sm:text-xl font-semibold py-1.5 sm:py-2 px-3 sm:px-4 rounded-full shadow-lg z-50">
             Time Left: {formatTime(timeLeft)}
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             {exam.mcqs.map((mcq) => (
-              <div key={mcq._id} className="mcq p-4  rounded-lg shadow-md">
-                <p className="text-xl font-semibold  mb-4">{mcq.question}</p>
+              <div
+                key={mcq._id}
+                className="mcq p-3 sm:p-4 rounded-lg shadow-md"
+              >
+                <p className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+                  {mcq.question}
+                </p>
                 {mcq.options.map((option, index) => (
                   <div key={index} className="mb-2">
                     <label className="flex items-center space-x-2">
@@ -116,7 +121,7 @@ const ExamPage = () => {
                         }
                         className="form-radio h-4 w-4 text-indigo-600"
                       />
-                      <span className="  text-lg">{option}</span>
+                      <span className="text-base sm:text-lg">{option}</span>
                     </label>
                   </div>
                 ))}
@@ -124,7 +129,7 @@ const ExamPage = () => {
             ))}
             <button
               type="submit"
-              className="w-full py-3 mt-4 text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md transition duration-200"
+              className="w-full py-2 sm:py-3 mt-3 sm:mt-4 text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md transition duration-200"
             >
               Submit Exam
             </button>

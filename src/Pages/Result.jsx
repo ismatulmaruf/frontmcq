@@ -54,8 +54,8 @@ const Result = () => {
 
   return (
     <Layout>
-      <div className="result-page min-h-screen p-4 sm:p-8">
-        <div className="max-w-full sm:max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6">
+      <div className="result-page min-h-screen  sm:p-8">
+        <div className="max-w-full sm:max-w-4xl mx-auto  shadow-lg rounded-lg p-4 sm:p-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-4 sm:mb-6">
             Exam Result
           </h1>
@@ -100,7 +100,7 @@ const Result = () => {
               return (
                 <div
                   key={mcq._id}
-                  className="mcq p-3 sm:p-4 bg-gray-100 rounded-lg shadow-md"
+                  className="mcq p-3 sm:p-4 bg-gray-800 rounded-lg shadow-md"
                 >
                   <h3 className="text-lg sm:text-xl font-semibold mb-2">
                     {index + 1}: {mcq.question}
@@ -115,10 +115,10 @@ const Result = () => {
                           key={optionIndex}
                           className={`text-md sm:text-lg font-medium p-2 rounded-md ${
                             isOptionCorrect
-                              ? "bg-green-200 text-green-800"
+                              ? "bg-green-600 text-white"
                               : isUserAnswer
-                              ? "bg-red-200 text-red-800"
-                              : "bg-gray-200 text-gray-800"
+                              ? "bg-red-800 text-white"
+                              : "bg-gray-700 text-white"
                           }`}
                         >
                           {option}
@@ -126,7 +126,7 @@ const Result = () => {
                       );
                     })}
                   </div>
-                  <p className="text-md sm:text-lg font-medium text-gray-600 mt-4">
+                  <p className="text-md sm:text-lg font-medium  mt-4">
                     <strong>Your Answer:</strong>{" "}
                     <span
                       className={
@@ -140,7 +140,7 @@ const Result = () => {
                       {userAnswer}
                     </span>
                   </p>
-                  <p className="text-md sm:text-lg font-medium text-gray-600">
+                  <p className="text-md sm:text-lg font-medium ">
                     <strong>Correct Answer:</strong>{" "}
                     <span
                       className={
@@ -152,7 +152,7 @@ const Result = () => {
                       {mcq.correctAnswer}
                     </span>
                   </p>
-                  <p className="text-md sm:text-lg font-medium text-gray-600">
+                  <p className="text-md sm:text-lg font-medium ">
                     <strong>Status:</strong>{" "}
                     <span
                       className={
@@ -170,7 +170,7 @@ const Result = () => {
                         : "Wrong"}
                     </span>
                   </p>
-                  <p className="text-md sm:text-lg font-medium text-gray-600 mt-4">
+                  <p className="text-md sm:text-lg font-medium  mt-4">
                     <strong>Explanation:</strong> {mcq.detailsAnswer}
                   </p>
                 </div>
