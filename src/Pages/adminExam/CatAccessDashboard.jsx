@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { useSelector } from "react-redux";
+import { ClipLoader } from "react-spinners";
 
 const UserSubscriptions = () => {
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState("");
   const { catId } = useParams();
+  const [loading, setLoading] = useState(false);
 
   const { isLoggedIn, role, data } = useSelector((state) => state.auth);
 
@@ -15,6 +17,7 @@ const UserSubscriptions = () => {
   }, []);
 
   const fetchUsers = async () => {
+    setLoading(true);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_REACT_APP_API_URL}/user/all`,
@@ -30,6 +33,8 @@ const UserSubscriptions = () => {
       setUsers(data.users);
     } catch (error) {
       console.error("Error fetching users:", error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
@@ -82,24 +87,34 @@ const UserSubscriptions = () => {
 
   return (
     <Layout>
-      <div className="p-6 max-w-3xl mx-auto min-h-screen">
-        <h1 className="text-2xl font-bold mb-4">User Subscriptions</h1>
+      <div className="p-4 sm:p-6 max-w-full sm:max-w-3xl mx-auto min-h-screen">
+        <h1 className="text-xl sm:text-2xl font-bold mb-4">
+          User Subscriptions
+        </h1>
 
         {status && <p className="text-green-500">{status}</p>}
 
         <p className="mb-4">
           <strong>Total Subscribed Users:</strong> {totalSubscribedUsers}
         </p>
+        {loading && (
+          <div className="flex justify-center items-center ">
+            <ClipLoader size={50} color={"#123abc"} loading={loading} />
+          </div>
+        )}
 
         <div className="mb-4">
-          <h2 className="text-xl font-semibold">Users List</h2>
+          <h2 className="text-lg sm:text-xl font-semibold">Users List</h2>
           <ul>
             {users?.map((user) => {
               const isSubscribed = user.subscribe.includes(catId);
 
               return (
-                <li key={user._id} className="border-b py-2 flex items-center">
-                  <div className="flex-1">
+                <li
+                  key={user._id}
+                  className="border-b py-2 flex flex-col sm:flex-row items-start sm:items-center"
+                >
+                  <div className="flex-1 mb-2 sm:mb-0">
                     <p>
                       <strong>ID:</strong> {user._id}
                     </p>

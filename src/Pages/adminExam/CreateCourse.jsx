@@ -205,7 +205,7 @@ export default function CreateExam() {
             </h1>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-green-500 text-white px-5 py-2.5 rounded-lg hover:bg-green-600 transition-colors"
+              className="bg-green-500 text-white px-5 py-2    rounded-lg hover:bg-green-600 transition-colors"
             >
               Create New Exam
             </button>
@@ -278,7 +278,7 @@ export default function CreateExam() {
         {isModalOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-xl w-full md:w-[48%]">
-              <h1 className="text-center dark:text-purple-500 text-4xl font-bold font-inter">
+              <h1 className="text-center dark:text-purple-500 text-xl font-bold font-inter">
                 {editMode ? "Edit Exam" : "Create New Exam"}
               </h1>
               <form
@@ -295,28 +295,22 @@ export default function CreateExam() {
                   onChange={handleUserInput}
                   value={userInput.title}
                 />
-                <div className="flex space-x-4">
-                  <div className="flex-1">
-                    <InputBox
-                      label={"Time"}
-                      name={"time"}
-                      type={"number"}
-                      placeholder={"Enter Exam Time"}
-                      onChange={handleUserInput}
-                      value={userInput.time}
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <InputBox
-                      label={"No"}
-                      name={"examNMmbr"}
-                      type={"number"}
-                      placeholder={"Enter Exam Number"}
-                      onChange={handleUserInput}
-                      value={userInput.examNMmbr}
-                    />
-                  </div>
-                </div>
+                <InputBox
+                  label={"Time"}
+                  name={"time"}
+                  type={"number"}
+                  placeholder={"Enter Exam Time"}
+                  onChange={handleUserInput}
+                  value={userInput.time}
+                />
+                <InputBox
+                  label={"No"}
+                  name={"examNMmbr"}
+                  type={"number"}
+                  placeholder={"Enter Exam Number"}
+                  onChange={handleUserInput}
+                  value={userInput.examNMmbr}
+                />
 
                 <TextArea
                   label={"Description"}
