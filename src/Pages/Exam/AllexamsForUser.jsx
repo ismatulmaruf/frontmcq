@@ -83,7 +83,7 @@ const ExamList = () => {
                 user?.subscribe.includes(exam.categoryID) ? (
                   <>
                     <button
-                      onClick={() => navigate(`/exam/${exam._id}`)}
+                      onClick={() => navigate(`/exam/${catId}/${exam._id}`)}
                       className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600 transition-colors w-1/2"
                     >
                       Go to Exam
