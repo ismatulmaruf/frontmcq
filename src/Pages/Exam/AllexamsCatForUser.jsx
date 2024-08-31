@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import Link and useNavigate from react-router-dom
 import Layout from "../../Layout/Layout";
 import { useSelector } from "react-redux";
+import { ClipLoader } from "react-spinners"; // A smart spinner, you can choose another
 
 const ExamList = () => {
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { isLoggedIn, role, data } = useSelector((state) => state.auth);
   // console.log(isLoggedIn, role, data);
@@ -13,6 +15,7 @@ const ExamList = () => {
   useEffect(() => {
     // Fetch categories from the API
     const fetchCategories = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `${import.meta.env.VITE_REACT_APP_API_URL}/category`,
@@ -22,6 +25,8 @@ const ExamList = () => {
         setCategories(data);
       } catch (error) {
         console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
 
@@ -55,6 +60,11 @@ const ExamList = () => {
     <Layout>
       <div className="p-6 min-h-screen">
         <h1 className="text-2xl font-bold mb-4">Categories</h1>
+        {loading && (
+          <div className="flex justify-center items-center ">
+            <ClipLoader size={50} color={"#123abc"} loading={loading} />
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category) => {
             return (

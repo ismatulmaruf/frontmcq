@@ -8,11 +8,11 @@ import { useSelector } from "react-redux";
 
 export default function CreateExam() {
   const { catId } = useParams();
-  console.log(catId);
+  // console.log(catId);
   const navigate = useNavigate();
 
   const { isLoggedIn, role, data } = useSelector((state) => state.auth);
-  console.log(isLoggedIn, role, data);
+  // console.log(isLoggedIn, role, data);
 
   const [isCreatingExam, setIsCreatingExam] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // New state for modal visibility

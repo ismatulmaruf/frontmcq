@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
+import { ClipLoader } from "react-spinners";
 
 const ExamList = () => {
   const [exams, setExams] = useState([]);
   const [user, setUser] = useState(null);
   const { catId } = useParams();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchExams = async () => {
+      setLoading(true); //
       try {
         const response = await fetch(
           `${import.meta.env.VITE_REACT_APP_API_URL}/exam/all/${catId}`,
@@ -24,6 +27,8 @@ const ExamList = () => {
         // setExams(data);
       } catch (error) {
         console.error("Error fetching exams:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
 
@@ -55,6 +60,11 @@ const ExamList = () => {
         <h1 className="text-4xl font-bold mb-6 text-center text-purple-800">
           Available Exams
         </h1>
+        {loading && (
+          <div className="flex justify-center items-center ">
+            <ClipLoader size={50} color={"#123abc"} loading={loading} />
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {exams.map((exam) => (
             <div
