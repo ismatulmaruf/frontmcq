@@ -32,12 +32,12 @@ export default function ForgotPassword() {
 
   return (
     <Layout>
-      <section className="flex flex-col gap-6 items-center py-8 px-3 min-h-[100vh] dark:bg-gray-700">
+      <section className="flex flex-col gap-6 items-center py-8 px-3 min-h-[100vh] dark:bg-gray-900">
         <form
           onSubmit={onForgotPassword}
           autoComplete="off"
           noValidate
-          className="flex flex-col dark:bg-base-100 gap-4 rounded-lg md:py-5 py-7 md:px-7 px-3 md:w-[500px] w-full shadow-custom dark:shadow-xl  "
+          className="flex flex-col dark:bg-gray-800 gap-4 rounded-lg md:py-5 py-7 md:px-7 px-3 md:w-[500px] w-full shadow-custom dark:shadow-xl  "
         >
           <h1 className="text-center dark:text-purple-500 text-4xl font-bold font-inter">
             Forgot Password Page
