@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import { ClipLoader } from "react-spinners";
+import { FaChevronLeft } from "react-icons/fa";
 
 const Result = () => {
   const { examId, catId } = useParams();
   const [examData, setExamData] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch exam data
     const fetchExamData = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `${
@@ -23,6 +28,8 @@ const Result = () => {
         setExamData(data);
       } catch (error) {
         console.error("Error fetching exam data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -46,7 +53,16 @@ const Result = () => {
     fetchUserData();
   }, [examId]);
 
-  if (!examData || !userData) return <div>Loading...</div>;
+  // if (!examData || !userData) return <div>Loading...</div>;
+
+  if (!examData || !userData)
+    return (
+      <Layout>
+        <div className="flex justify-center items-center min-h-screen">
+          <ClipLoader size={50} color={"#123abc"} loading={loading} />
+        </div>
+      </Layout>
+    );
 
   const userExamResult = userData.examResults.find(
     (result) => result.examId === examId
@@ -56,12 +72,24 @@ const Result = () => {
     <Layout>
       <div className="result-page min-h-screen  sm:p-8">
         <div className="max-w-full sm:max-w-4xl mx-auto  shadow-lg rounded-lg p-4 sm:p-6">
-          <h1 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-4 sm:mb-6">
-            Exam Result
-          </h1>
-          <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">
-            {examData.title}
+          <div className="flex justify-between items-center mb-4 sm:mb-6">
+            <button
+              onClick={() => navigate(`/allexamsForUser/${catId}`)}
+              className="py-1 px-3 sm:py-2 sm:px-4 bg-indigo-600 text-white font-medium rounded-full shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out flex items-center space-x-2"
+            >
+              <FaChevronLeft />
+              <span>Back</span>
+            </button>
+
+            <h1 className="text-2xl sm:text-3xl font-bold text-indigo-600">
+              Exam Result
+            </h1>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 ">
+            <span>{examData.title}</span>
           </h2>
+
           <p className="text-md sm:text-lg font-medium">
             Score:{" "}
             <span className="text-indigo-500">{userExamResult.score}</span> /{" "}
@@ -100,7 +128,7 @@ const Result = () => {
               return (
                 <div
                   key={mcq._id}
-                  className="mcq p-3 sm:p-4 bg-gray-800 rounded-lg shadow-md"
+                  className="mcq p-3 sm:p-4 dark:bg-gray-800 rounded-lg shadow-md"
                 >
                   <h3 className="text-lg sm:text-xl font-semibold mb-2">
                     {index + 1}: {mcq.question}
@@ -118,7 +146,7 @@ const Result = () => {
                               ? "bg-green-600 text-white"
                               : isUserAnswer
                               ? "bg-red-800 text-white"
-                              : "bg-gray-700 text-white"
+                              : "dark:bg-gray-700 dark:text-white text-gray-700"
                           }`}
                         >
                           {option}
@@ -177,6 +205,12 @@ const Result = () => {
               );
             })}
           </div>
+          <button
+            onClick={() => navigate(`/allexamsForUser/${catId}`)}
+            className="w-full mt-4 py-2 sm:py-3 bg-indigo-600 text-white font-medium rounded-md shadow-md hover:bg-indigo-700 transition duration-200 ease-in-out flex items-center justify-center space-x-2"
+          >
+            <span>Go To All Exams</span>
+          </button>
         </div>
       </div>
     </Layout>

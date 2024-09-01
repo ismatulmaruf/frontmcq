@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import { ClipLoader } from "react-spinners";
 
 const ExamPage = () => {
   const { examId, catId } = useParams();
@@ -8,10 +9,13 @@ const ExamPage = () => {
   const [answers, setAnswers] = useState({});
   const navigate = useNavigate(); // Use useNavigate instead of useHistory
   const [timeLeft, setTimeLeft] = useState(null); // State to manage the timer
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     // Fetch the exam details from the backend
     const fetchExam = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `${import.meta.env.VITE_REACT_APP_API_URL}/exam/${catId}/${examId}`,
@@ -29,6 +33,8 @@ const ExamPage = () => {
         }
       } catch (error) {
         console.error("Error fetching exam:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -56,6 +62,7 @@ const ExamPage = () => {
     e?.preventDefault();
     // console.log(answers);
     try {
+      setSubmitting(true);
       const response = await fetch(
         `${import.meta.env.VITE_REACT_APP_API_URL}/exam/${catId}/${examId}`,
         {
@@ -78,6 +85,8 @@ const ExamPage = () => {
       }
     } catch (error) {
       console.error("Error submitting exam:", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -87,7 +96,14 @@ const ExamPage = () => {
     return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  if (!exam) return <div>Loading...</div>;
+  if (!exam)
+    return (
+      <Layout>
+        <div className="flex justify-center items-center min-h-screen">
+          <ClipLoader size={50} color={"#123abc"} loading={loading} />
+        </div>
+      </Layout>
+    );
 
   return (
     <Layout>
@@ -119,7 +135,7 @@ const ExamPage = () => {
                         onChange={(e) =>
                           handleAnswerChange(mcq._id, e.target.value)
                         }
-                        className="form-radio h-4 w-4 text-indigo-600"
+                        className="form-radio h-5 w-5 text-indigo-600"
                       />
                       <span className="text-base sm:text-lg">{option}</span>
                     </label>
@@ -131,7 +147,7 @@ const ExamPage = () => {
               type="submit"
               className="w-full py-2 sm:py-3 mt-3 sm:mt-4 text-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md transition duration-200"
             >
-              Submit Exam
+              {submitting ? "Submitting Exam...." : "Submit Exam"}
             </button>
           </form>
         </div>
