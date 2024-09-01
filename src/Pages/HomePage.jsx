@@ -11,11 +11,11 @@ export default function HomePage() {
           <h1 className="md:text-5xl text-6xl font-semibold text-gray-900 dark:text-gray-200">
             Find out best
             <span className="text-yellow-500 font-bold font-open-sans">
-              Online Courses
+              Online Exams
             </span>
           </h1>
           <p className="text-xl text-gray-500 dark:text-gray-300 font-inter">
-            We have a large library of courses taught by highly skilled and
+            We have a large library of exams taught by highly skilled and
             qualified faculties at a very affordable cost.
           </p>
 
