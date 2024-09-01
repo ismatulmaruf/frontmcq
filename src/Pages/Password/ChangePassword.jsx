@@ -32,7 +32,7 @@ export default function ChangePassword() {
     }
 
     setIsLoading(true);
-    
+
     // dispatch create account action
     const response = await dispatch(changePassword(userPassword));
     if (response?.payload?.success) {
@@ -57,7 +57,7 @@ export default function ChangePassword() {
           <h1 className="text-center dark:text-purple-500 text-4xl font-bold font-inter">
             Change Password Page
           </h1>
-          
+
           {/* old password */}
           <InputBox
             label={"Old Password"}
@@ -90,7 +90,7 @@ export default function ChangePassword() {
           <p className="text-center font-inter text-gray-500 dark:text-slate-300">
             Not Remember ?{" "}
             <Link
-              to="/reset"
+              to="/user/profile/reset-password"
               className="link text-blue-600 font-lato cursor-pointer"
             >
               {" "}

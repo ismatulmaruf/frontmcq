@@ -94,7 +94,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(getAllCourses());
+      // await dispatch(getAllCourses());
       await dispatch(getStatsData());
       // await dispatch(getPaymentRecord());
     })();
@@ -198,7 +198,7 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          <div className=" w-[100%] self-center flex flex-col   justify-center gap-10 mb-10">
+          {/* <div className=" w-[100%] self-center flex flex-col   justify-center gap-10 mb-10">
             <div className="flex w-full items-center justify-between md:px-[40px] px-3">
               <h1 className="text-center font-inter md:text-3xl text-xl text-gray-600 dark:text-slate-50 font-semibold">
                 Courses overview
@@ -273,7 +273,7 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </Layout>

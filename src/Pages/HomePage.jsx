@@ -20,7 +20,7 @@ export default function HomePage() {
           </p>
 
           <div className="space-x-6 flex">
-            <Link to="/allexamsForNonUser">
+            <Link to="/allexamsCatForUser">
               <button className="bg-yellow-500 font-inter font-[400] text-slate-100 dark:text-gray-950 md:px-5 px-3 md:py-3 py-3 rounded-md  md:text-lg text-base cursor-pointer transition-all ease-in-out duration-300">
                 Explore Exams
               </button>

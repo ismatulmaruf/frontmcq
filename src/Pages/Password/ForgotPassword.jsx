@@ -66,7 +66,7 @@ export default function ForgotPassword() {
           <p className="text-center font-inter text-gray-500 dark:text-slate-300">
             Back to profile ?{" "}
             <Link
-              to="/user/me"
+              to="/user/profile"
               className="link text-blue-600 font-lato cursor-pointer"
             >
               {" "}

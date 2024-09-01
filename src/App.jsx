@@ -53,15 +53,6 @@ function App() {
           element={<ResetPassword />}
         />
 
-        <Route
-          path="/allexamsCatForUser"
-          element={isLoggedIn ? <AllexamsCatForUser /> : ""}
-        />
-        <Route
-          path="/allexamsForUser/:catId"
-          element={isLoggedIn ? <AllexamsForUser /> : ""}
-        />
-
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
           <Route path="/category/create" element={<Category />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -82,6 +73,9 @@ function App() {
             <RequireAuth allowedRoles={["USER", "ADMIN", "INSTRUCTOR"]} />
           }
         >
+          <Route path="/allexamsCatForUser" element={<AllexamsCatForUser />} />
+          <Route path="/allexamsForUser/:catId" element={<AllexamsForUser />} />
+
           <Route path="/exam/:catId/:examId" element={<Exam />} />
           <Route path="/results/:catId/:examId" element={<Result />} />
 
