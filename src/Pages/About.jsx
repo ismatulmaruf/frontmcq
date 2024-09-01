@@ -20,7 +20,7 @@ function AboutUs() {
 
   return (
     <Layout>
-      <section className="md:py-10 py-7 mb-10 text-white overflow-x-hidden  md:px-16 px-6 min-h-[100vh] dark:bg-gray-900">
+      <section className="md:py-10 py-7  text-white overflow-x-hidden  md:px-16 px-6 min-h-[100vh] dark:bg-gray-900">
         {/* hero */}
         <div className="flex md:flex-row flex-col-reverse items-center justify-center md:gap-10 gap-7 w-full space-y-7">
           <div className="md:w-1/2 w-full space-y-7">

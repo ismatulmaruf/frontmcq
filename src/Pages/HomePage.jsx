@@ -6,7 +6,7 @@ import heroPng from "../assets/images/hero.png";
 export default function HomePage() {
   return (
     <Layout>
-      <section className="md:py-10 py-7 mb-10 dark:bg-gray-800 text-white flex md:flex-row flex-col-reverse items-center justify-center md:gap-10 gap-7 md:px-16 px-6 min-h-[85vh]">
+      <section className="md:py-10 py-7  dark:bg-gray-900 text-white flex md:flex-row flex-col-reverse items-center justify-center md:gap-10 gap-7 md:px-16 px-6 min-h-[85vh]">
         <div className="md:w-1/2 w-full space-y-7">
           <h1 className="md:text-5xl text-6xl font-semibold text-gray-900 dark:text-gray-200">
             Find out best
