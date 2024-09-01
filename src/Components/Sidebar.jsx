@@ -12,6 +12,7 @@ import {
   FaInfoCircle,
   FaPhone,
   FaTag,
+  FaUserAlt,
 } from "react-icons/fa";
 
 export default function Sidebar({ hideBar = false }) {
@@ -76,15 +77,29 @@ export default function Sidebar({ hideBar = false }) {
             </li>
 
             {role === "ADMIN" && (
-              <li>
-                <Link to="/admin/dashboard" className="flex gap-4 items-center">
-                  <FaUserCircle
-                    size={18}
-                    className="text-gray-500 dark:text-slate-100"
-                  />
-                  Admin DashBoard
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link
+                    to="/admin/dashboard"
+                    className="flex gap-4 items-center"
+                  >
+                    <FaUserCircle
+                      size={18}
+                      className="text-gray-500 dark:text-slate-100"
+                    />
+                    Admin DashBoard
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/allusers" className="flex gap-4 items-center">
+                    <FaUserAlt
+                      size={18}
+                      className="text-gray-500 dark:text-slate-100"
+                    />
+                    Users
+                  </Link>
+                </li>
+              </>
             )}
             {(role === "ADMIN" || role == "INSTRUCTOR") && (
               <li>

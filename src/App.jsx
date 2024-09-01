@@ -19,10 +19,12 @@ import Denied from "./Pages/Denied";
 import RequireAuth from "./Components/auth/RequireAuth";
 import CreateExam from "./Pages/adminExam/CreateCourse";
 import CatAccessDashboard from "./Pages/adminExam/CatAccessDashboard";
+import Allusers from "./Pages/adminExam/Allusers";
 import AllExamCatAdmin from "./Pages/adminExam/AllExamCatAdmin";
 import Category from "./Pages/adminExam/Category";
 import Profile from "./Pages/User/Profile";
 import Checkout from "./Pages/Payment/Checkout";
+import CheckoutWP from "./Pages/Payment/CheckoutWP";
 import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 import CheckoutFail from "./Pages/Payment/CheckoutFail";
 import AddMcq from "./Pages/Dashboard/DisplayLecture";
@@ -57,6 +59,7 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
           <Route path="/category/create" element={<Category />} />
+          <Route path="/allusers" element={<Allusers />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Route>
 
@@ -86,6 +89,8 @@ function App() {
             path="/user/profile/change-password"
             element={<ChangePassword />}
           />
+
+          <Route path="/buy/:price/:examname" element={<CheckoutWP />} />
 
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/success" element={<CheckoutSuccess />} />

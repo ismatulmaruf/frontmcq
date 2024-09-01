@@ -87,28 +87,10 @@ const ExamList = () => {
                   Price: BDT {category.price}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {user && user.role === "ADMIN" ? (
-                    <div className="flex w-full gap-2">
-                      <Link
-                        to={`/allexamsForUser/${category._id}`}
-                        className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-red-600 transition-colors mt-4 w-[33%] text-center"
-                      >
-                        Go to Exam
-                      </Link>
-                      <Link
-                        to={`/preview/${category._id}`}
-                        className="bg-yellow-500 text-white font-bold px-4 py-2 rounded-md hover:bg-yellow-600 transition-colors mt-4 w-[33%] text-center"
-                      >
-                        Preview Exam
-                      </Link>
-                      <Link
-                        to={`/buy/${category._id}`}
-                        className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors mt-4 w-[33%] text-center"
-                      >
-                        Buy this Exam
-                      </Link>
-                    </div>
-                  ) : user && user.subscribe.includes(category._id) ? (
+                  {user &&
+                  (user.subscribe.includes(category._id) ||
+                    user.role === "ADMIN" ||
+                    user.role === "INSTRUCTOR") ? (
                     <Link
                       to={`/allexamsForUser/${category._id}`}
                       className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600 transition-colors mt-4 w-full text-center"
@@ -124,7 +106,7 @@ const ExamList = () => {
                         Preview Exam
                       </Link>
                       <Link
-                        to={`/buy/${category._id}`}
+                        to={`/buy/${category.price}/${category.name}`}
                         className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors mt-4 w-[50%] text-center"
                       >
                         Buy this Exam
