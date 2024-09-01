@@ -32,7 +32,7 @@ export default function ForgotPassword() {
 
   return (
     <Layout>
-      <section className="flex flex-col gap-6 items-center py-8 px-3 min-h-[100vh]">
+      <section className="flex flex-col gap-6 items-center py-8 px-3 min-h-[100vh] dark:bg-gray-700">
         <form
           onSubmit={onForgotPassword}
           autoComplete="off"

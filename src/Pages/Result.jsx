@@ -90,12 +90,12 @@ const Result = () => {
             <span>{examData.title}</span>
           </h2>
 
-          <p className="text-md sm:text-lg font-medium">
+          <p className="text-md sm:text-lg font-medium dark:text-gray-100">
             Score:{" "}
             <span className="text-indigo-500">{userExamResult.score}</span> /{" "}
             {examData.numberOfMCQs}
           </p>
-          <p className="text-md sm:text-lg font-medium">
+          <p className="text-md sm:text-lg font-medium dark:text-gray-100">
             Unanswered:{" "}
             <span className="text-indigo-500">
               {examData.numberOfMCQs -
@@ -103,7 +103,7 @@ const Result = () => {
             </span>
           </p>
           {examData.AddmissionExam ? (
-            <p className="text-md sm:text-lg font-medium mb-4 sm:mb-6">
+            <p className="text-md sm:text-lg font-medium mb-4 sm:mb-6 dark:text-gray-100">
               Incorrect Answer:{" "}
               <span className="text-red-500">
                 {userExamResult.incorrectAnswersCount} * 0.25 ={" "}
@@ -130,7 +130,7 @@ const Result = () => {
                   key={mcq._id}
                   className="mcq p-3 sm:p-4 dark:bg-gray-800 rounded-lg shadow-md"
                 >
-                  <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2 dark:text-gray-100">
                     {index + 1}: {mcq.question}
                   </h3>
                   <div className="options space-y-2">
@@ -154,7 +154,7 @@ const Result = () => {
                       );
                     })}
                   </div>
-                  <p className="text-md sm:text-lg font-medium  mt-4">
+                  <p className="text-md sm:text-lg font-medium  mt-4 dark:text-gray-100">
                     <strong>Your Answer:</strong>{" "}
                     <span
                       className={
@@ -168,7 +168,7 @@ const Result = () => {
                       {userAnswer}
                     </span>
                   </p>
-                  <p className="text-md sm:text-lg font-medium ">
+                  <p className="text-md sm:text-lg font-medium dark:text-gray-100">
                     <strong>Correct Answer:</strong>{" "}
                     <span
                       className={
@@ -180,7 +180,7 @@ const Result = () => {
                       {mcq.correctAnswer}
                     </span>
                   </p>
-                  <p className="text-md sm:text-lg font-medium ">
+                  <p className="text-md sm:text-lg font-medium dark:text-gray-100">
                     <strong>Status:</strong>{" "}
                     <span
                       className={
@@ -198,7 +198,7 @@ const Result = () => {
                         : "Wrong"}
                     </span>
                   </p>
-                  <p className="text-md sm:text-lg font-medium  mt-4">
+                  <p className="text-md sm:text-lg font-medium  mt-4 dark:text-gray-100">
                     <strong>Explanation:</strong> {mcq.detailsAnswer}
                   </p>
                 </div>

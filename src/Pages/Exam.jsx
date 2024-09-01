@@ -122,7 +122,7 @@ const ExamPage = () => {
                 key={mcq._id}
                 className="mcq p-3 sm:p-4 rounded-lg shadow-md"
               >
-                <p className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+                <p className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 dark:text-gray-100">
                   {mcq.question}
                 </p>
                 {mcq.options.map((option, index) => (
@@ -137,7 +137,9 @@ const ExamPage = () => {
                         }
                         className="form-radio h-5 w-5 text-indigo-600"
                       />
-                      <span className="text-base sm:text-lg">{option}</span>
+                      <span className="text-base sm:text-lg dark:text-gray-100">
+                        {option}
+                      </span>
                     </label>
                   </div>
                 ))}
