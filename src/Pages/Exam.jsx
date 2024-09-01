@@ -107,7 +107,7 @@ const ExamPage = () => {
 
   return (
     <Layout>
-      <div className="exam-page min-h-screen  sm:p-8">
+      <div className="exam-page min-h-screen  sm:p-8 dark:bg-gray-800">
         <div className="max-w-4xl mx-auto shadow-lg rounded-lg p-4 sm:p-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-6 sm:mb-8">
             {exam.title}

@@ -70,7 +70,7 @@ const Result = () => {
 
   return (
     <Layout>
-      <div className="result-page min-h-screen  sm:p-8">
+      <div className="result-page min-h-screen  sm:p-8 dark:bg-gray-800">
         <div className="max-w-full sm:max-w-4xl mx-auto  shadow-lg rounded-lg p-4 sm:p-6">
           <div className="flex justify-between items-center mb-4 sm:mb-6">
             <button

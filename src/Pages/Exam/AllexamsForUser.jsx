@@ -56,7 +56,7 @@ const ExamList = () => {
 
   return (
     <Layout>
-      <div className="p-6 min-h-screen">
+      <div className="p-6 min-h-screen dark:bg-gray-800">
         <h1 className="text-4xl font-bold mb-6 text-center text-purple-800">
           Available Exams
         </h1>

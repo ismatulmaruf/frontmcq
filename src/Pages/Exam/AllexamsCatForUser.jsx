@@ -58,7 +58,7 @@ const ExamList = () => {
 
   return (
     <Layout>
-      <div className="p-6 min-h-screen">
+      <div className="p-6 min-h-screen dark:bg-gray-800">
         <h1 className="text-2xl font-bold mb-4">Categories</h1>
         {loading && (
           <div className="flex justify-center items-center ">
