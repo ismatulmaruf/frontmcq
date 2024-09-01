@@ -31,11 +31,13 @@ import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
 import Exam from "./Pages/Exam";
 import Result from "./Pages/Result";
 import { useSelector } from "react-redux";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   const { isLoggedIn, role, data } = useSelector((state) => state.auth);
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
