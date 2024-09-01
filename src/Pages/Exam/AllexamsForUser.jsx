@@ -89,6 +89,7 @@ const ExamList = () => {
 
               <div className="flex space-x-4">
                 {user?.role === "ADMIN" ||
+                user?.role === "INSTRUCTOR" ||
                 exam.free ||
                 user?.subscribe.includes(exam.categoryID) ? (
                   <>
@@ -111,7 +112,7 @@ const ExamList = () => {
                   </>
                 ) : (
                   <button
-                    onClick={() => handleBuyExam(exam._id)}
+                    onClick={() => navigate(`/allexamsCatForUser`)}
                     className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors w-full"
                   >
                     Buy this Exam

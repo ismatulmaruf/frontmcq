@@ -100,7 +100,7 @@ const ExamList = () => {
                   ) : (
                     <div className="flex w-full gap-2">
                       <Link
-                        to={`/preview/${category._id}`}
+                        to={`/allexamsForUser/${category._id}`}
                         className="bg-yellow-500 text-white font-bold px-4 py-2 rounded-md hover:bg-yellow-600 transition-colors mt-4 w-[50%] text-center"
                       >
                         Preview Exam
