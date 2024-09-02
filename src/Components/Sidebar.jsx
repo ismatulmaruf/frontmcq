@@ -51,7 +51,7 @@ export default function Sidebar({ hideBar = false }) {
             <FiMenu
               onClick={changeWidth}
               size={"32px"}
-              className="font-bold text-base-200 dark:text-white m-4"
+              className="font-bold  text-gray-900 dark:text-white m-4"
             />
           </label>
         </div>

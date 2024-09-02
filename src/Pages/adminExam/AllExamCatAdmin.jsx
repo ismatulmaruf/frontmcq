@@ -39,6 +39,7 @@ const AllExamCatAdmin = () => {
         );
         const data = await response.json();
 
+        console.log(data);
         setUser(data.user);
         // console.log(user?.subscribe);
       } catch (error) {
@@ -47,7 +48,7 @@ const AllExamCatAdmin = () => {
     };
 
     fetchCategories();
-    fetchUserData();
+    // fetchUserData();
   }, []);
 
   return (
@@ -86,13 +87,13 @@ const AllExamCatAdmin = () => {
                       to={`/catAccessDashbord/${category._id}`}
                       className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-red-600 transition-colors mt-4 w-[50%] text-center"
                     >
-                      Access Dashboard
+                      Dashboard
                     </Link>
                     <Link
                       to={`/addExam/${category._id}`}
                       className="bg-yellow-500 text-white font-bold px-4 py-2 rounded-md hover:bg-yellow-600 transition-colors mt-4 w-[50%] text-center"
                     >
-                      Add Exam
+                      Exam
                     </Link>
                   </div>
                 </div>

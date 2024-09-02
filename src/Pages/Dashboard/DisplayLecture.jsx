@@ -239,7 +239,7 @@ export default function DisplayMCQ() {
                       >
                         {idx + 1}. {mcq.question}
                       </span>
-                      {role === "ADMIN" && (
+                      {(role === "ADMIN" || role === "INSTRUCTOR") && (
                         <div>
                           <button
                             onClick={() => handleEditMCQ(mcq)}

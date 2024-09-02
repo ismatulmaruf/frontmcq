@@ -76,6 +76,8 @@ export default function CreateExam() {
           (a, b) => a.examNMmbr - b.examNMmbr
         );
 
+        // console.log(data);
+
         setExams(sortedExams);
       } else {
         toast.error("Failed to fetch exams.");
@@ -200,14 +202,14 @@ export default function CreateExam() {
         {/* Left Column: Existing Exams */}
         <div className="">
           <div className="flex items-center justify-between mb-3">
-            <h1 className="text-center dark:text-purple-500 text-4xl font-bold font-inter">
+            <h1 className="text-center dark:text-purple-500 md:text-4xl text-2xl font-bold font-inter">
               Existing Exams
             </h1>
             <button
               onClick={() => setIsModalOpen(true)}
               className="bg-green-500 text-white px-5 py-2    rounded-lg hover:bg-green-600 transition-colors"
             >
-              Create New Exam
+              Create
             </button>
           </div>
 

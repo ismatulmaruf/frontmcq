@@ -3,24 +3,46 @@ import { useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 const UserSubscriptions = () => {
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState("");
   const { catId } = useParams();
   const [loading, setLoading] = useState(false);
+  const [exams, setExams] = useState([]);
 
   const { isLoggedIn, role, data } = useSelector((state) => state.auth);
 
   useEffect(() => {
     fetchUsers();
+    fetchExams();
   }, []);
+
+  const fetchExams = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/courses/withId/${catId}`
+      );
+      const data = await response.json();
+      if (data.success) {
+        const sortedExams = data.exams.sort(
+          (a, b) => a.examNMmbr - b.examNMmbr
+        );
+        setExams(sortedExams);
+      } else {
+        toast.error("Failed to fetch exams.");
+      }
+    } catch (error) {
+      toast.error("An error occurred while fetching exams.");
+    }
+  };
 
   const fetchUsers = async () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_REACT_APP_API_URL}/user/all`,
+        `${import.meta.env.VITE_REACT_APP_API_URL}/user/allwithresult`,
         {
           method: "GET",
           credentials: "include",
@@ -34,7 +56,7 @@ const UserSubscriptions = () => {
     } catch (error) {
       console.error("Error fetching users:", error);
     } finally {
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false);
     }
   };
 
@@ -70,7 +92,7 @@ const UserSubscriptions = () => {
         );
       }
       setStatus(`Subscription ${action === "add" ? "added" : "removed"}`);
-      fetchUsers(); // Refresh users list to reflect changes
+      fetchUsers();
     } catch (error) {
       console.error(
         `Error ${action === "add" ? "adding" : "removing"} subscription:`,
@@ -80,7 +102,6 @@ const UserSubscriptions = () => {
     }
   };
 
-  // Calculate total subscribed users
   const totalSubscribedUsers = users.filter((user) =>
     user.subscribe.includes(catId)
   ).length;
@@ -109,6 +130,20 @@ const UserSubscriptions = () => {
             {users?.map((user) => {
               const isSubscribed = user.subscribe.includes(catId);
 
+              const examsForThisCategory =
+                user.examResults?.filter((examResult) => {
+                  const matchingExam = exams.find(
+                    (exam) =>
+                      exam._id === examResult.examId &&
+                      exam.categoryID === catId
+                  );
+
+                  // Return true if a matching exam is found
+                  return !!matchingExam;
+                }) || [];
+
+              const totalExamsTaken = examsForThisCategory.length;
+
               return (
                 <li
                   key={user._id}
@@ -121,6 +156,9 @@ const UserSubscriptions = () => {
                     <p>
                       <strong>Email:</strong> {user.email}
                     </p>
+                    <p>
+                      <strong>Total Take Exam:</strong> {totalExamsTaken}
+                    </p>
                   </div>
                   <div className="flex space-x-2">
                     <button
@@ -132,7 +170,7 @@ const UserSubscriptions = () => {
                           : "bg-blue-500 hover:bg-blue-600"
                       } text-white`}
                     >
-                      Add Subscription
+                      Add
                     </button>
                     {role === "ADMIN" && (
                       <button
@@ -144,7 +182,7 @@ const UserSubscriptions = () => {
                             : "bg-red-500 hover:bg-red-600"
                         } text-white`}
                       >
-                        Remove Subscription
+                        Remove
                       </button>
                     )}
                   </div>
