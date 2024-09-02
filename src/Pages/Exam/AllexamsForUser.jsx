@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { ClipLoader } from "react-spinners";
+import { FaLock } from "react-icons/fa";
 
 const ExamList = () => {
   const [exams, setExams] = useState([]);
@@ -69,25 +70,27 @@ const ExamList = () => {
           {exams.map((exam) => (
             <div
               key={exam._id}
-              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between"
             >
-              <h2 className="text-2xl font-semibold text-purple-700 mb-2">
-                {exam.examNMmbr + ". " + exam.title}
-              </h2>
-              <p className="text-gray-700 dark:text-gray-400 mb-2">
-                <strong>Description:</strong> {exam.description}
-              </p>
-              <p className="text-gray-700 dark:text-gray-400 mb-2">
-                <strong>Category:</strong> {exam.category}
-              </p>
-              <p className="text-gray-700 dark:text-gray-400 mb-2">
-                <strong>Duration:</strong> {exam.time} minutes
-              </p>
-              <p className="text-gray-700 dark:text-gray-400 mb-2">
-                <strong>Number of MCQs:</strong> {exam.numberOfMCQs}
-              </p>
+              <div>
+                <h2 className="text-2xl font-semibold text-purple-700 mb-2">
+                  {exam.examNMmbr + ". " + exam.title}
+                </h2>
+                <p className="text-gray-700 dark:text-gray-400 mb-2">
+                  <strong>Description:</strong> {exam.description}
+                </p>
+                <p className="text-gray-700 dark:text-gray-400 mb-2">
+                  <strong>Category:</strong> {exam.category}
+                </p>
+                <p className="text-gray-700 dark:text-gray-400 mb-2">
+                  <strong>Duration:</strong> {exam.time} minutes
+                </p>
+                <p className="text-gray-700 dark:text-gray-400 mb-2">
+                  <strong>Number of MCQs:</strong> {exam.numberOfMCQs}
+                </p>
+              </div>
 
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 mt-4">
                 {user?.role === "ADMIN" ||
                 user?.role === "INSTRUCTOR" ||
                 exam.free ||
@@ -95,7 +98,9 @@ const ExamList = () => {
                   <>
                     <button
                       onClick={() => navigate(`/exam/${catId}/${exam._id}`)}
-                      className="bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600 transition-colors w-1/2"
+                      className={`bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600 transition-colors ${
+                        exam.canSeeResult ? "w-1/2" : "w-full"
+                      }`}
                     >
                       Go to Exam
                     </button>
@@ -112,10 +117,11 @@ const ExamList = () => {
                   </>
                 ) : (
                   <button
-                    onClick={() => navigate(`/allexamsCatForUser`)}
-                    className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors w-full"
+                    disabled
+                    className="flex items-center justify-center bg-red-500 text-white font-bold px-4 py-2 rounded-md transition-colors w-full cursor-not-allowed opacity-50 space-x-2 hover:bg-red-500 hover:opacity-75"
                   >
-                    Buy this Exam
+                    <FaLock />
+                    <span>Go to Exam</span>
                   </button>
                 )}
               </div>
