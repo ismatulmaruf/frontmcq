@@ -117,13 +117,13 @@ const ExamPage = () => {
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-            {exam.mcqs.map((mcq) => (
+            {exam.mcqs.map((mcq, index) => (
               <div
                 key={mcq._id}
                 className="mcq p-3 sm:p-4 rounded-lg shadow-md"
               >
                 <p className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 dark:text-gray-100">
-                  {mcq.question}
+                  {index + 1 + ". " + mcq.question}
                 </p>
                 {mcq.options.map((option, index) => (
                   <div key={index} className="mb-2">
