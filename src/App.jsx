@@ -16,8 +16,8 @@ import Contact from "./Pages/Contact";
 import Denied from "./Pages/Denied";
 // import CourseDescription from "./Pages/adminExam/CourseDescription";
 
-import Error from "./components/Error";
-import Success from "./components/Success";
+import Error from "./Components/Error";
+import Success from "./Components/Success";
 
 import RequireAuth from "./Components/auth/RequireAuth";
 import CreateExam from "./Pages/adminExam/CreateCourse";
