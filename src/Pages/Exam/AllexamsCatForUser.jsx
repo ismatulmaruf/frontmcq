@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom"; // Import Link and useNavi
 import Layout from "../../Layout/Layout";
 import { useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners"; // A smart spinner, you can choose another
+import axios from "axios";
 
 const ExamList = () => {
   const [categories, setCategories] = useState([]);
@@ -50,11 +51,24 @@ const ExamList = () => {
     fetchUserData();
   }, []);
 
-  const handleBuyCategory = (categoryId) => {
-    // Logic for buying the category
-    console.log(`Buy category: ${categoryId}`);
-    // You can navigate to a purchase page or call an API to handle the purchase
+  const pay = async (price, catid) => {
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/bkash/payment/create`,
+        { amount: price, orderId: 1, catid: catid, userId: user?._id },
+        { withCredentials: true }
+      );
+      window.location.href = data.bkashURL;
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
+
+  // const handleBuyCategory = (categoryId) => {
+  // Logic for buying the category
+  // console.log(`Buy category: ${categoryId}`);
+  // You can navigate to a purchase page or call an API to handle the purchase
+  // };
 
   return (
     <Layout>
@@ -105,12 +119,19 @@ const ExamList = () => {
                       >
                         Preview Exam
                       </Link>
-                      <Link
+
+                      {/* <Link
                         to={`/buy/${category.price}/${category.name}`}
                         className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors mt-4 w-[50%] text-center"
                       >
                         Buy this Exam
-                      </Link>
+                      </Link> */}
+                      <button
+                        className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors mt-4 w-[50%] text-center"
+                        onClick={() => pay(category.price, category._id)}
+                      >
+                        Pay bkash
+                      </button>
                     </div>
                   )}
                 </div>

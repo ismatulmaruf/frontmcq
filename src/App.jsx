@@ -16,6 +16,9 @@ import Contact from "./Pages/Contact";
 import Denied from "./Pages/Denied";
 // import CourseDescription from "./Pages/adminExam/CourseDescription";
 
+import Error from "./components/Error";
+import Success from "./components/Success";
+
 import RequireAuth from "./Components/auth/RequireAuth";
 import CreateExam from "./Pages/adminExam/CreateCourse";
 import CatAccessDashboard from "./Pages/adminExam/CatAccessDashboard";
@@ -56,6 +59,9 @@ function App() {
           path="/user/profile/reset-password/:resetToken"
           element={<ResetPassword />}
         />
+
+        <Route path="/error?" element={<Error />} />
+        <Route path="/success" element={<Success />} />
 
         <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
           <Route path="/category/create" element={<Category />} />
