@@ -10,6 +10,7 @@ const ExamList = () => {
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [buying, setBuying] = useState(false);
   const navigate = useNavigate();
   const { isLoggedIn, role, data } = useSelector((state) => state.auth);
   // console.log(isLoggedIn, role, data);
@@ -53,6 +54,7 @@ const ExamList = () => {
   }, []);
 
   const pay = async (price, catid) => {
+    setBuying(true);
     try {
       const { data } = await axios.post(
         `${import.meta.env.VITE_REACT_APP_API_URL}/bkash/payment/create`,
@@ -62,6 +64,8 @@ const ExamList = () => {
       window.location.href = data.bkashURL;
     } catch (error) {
       console.log(error.response.data);
+    } finally {
+      setBuying(false); // Set loading to false after data is fetched
     }
   };
 
@@ -131,12 +135,24 @@ const ExamList = () => {
                         className="flex items-center justify-center bg-[#E2116E] text-white font-bold px-4 py-2 rounded-md hover:bg-[#c20e5d] transition-colors mt-4 w-[50%] text-center relative"
                         onClick={() => pay(category.price, category._id)}
                       >
-                        <img
-                          src={bkash}
-                          alt="bkash"
-                          className="w-6 h-auto mr-2" // Adjust size and margin
-                        />
-                        Buy
+                        {buying ? (
+                          <div className="flex justify-center items-center ">
+                            <ClipLoader
+                              size={25}
+                              color={"#fff"}
+                              loading={buying}
+                            />
+                          </div>
+                        ) : (
+                          <span className="flex justify-center items-center">
+                            <img
+                              src={bkash}
+                              alt="bkash"
+                              className="w-6 h-auto mr-2" // Adjust size and margin
+                            />
+                            Buy
+                          </span>
+                        )}
                       </button>
                     </div>
                   )}
