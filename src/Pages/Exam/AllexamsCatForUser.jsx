@@ -4,6 +4,7 @@ import Layout from "../../Layout/Layout";
 import { useSelector } from "react-redux";
 import { ClipLoader } from "react-spinners"; // A smart spinner, you can choose another
 import axios from "axios";
+import bkash from "../../assets/images/679979bc-c48b-4ed1-b239-b0b2d494b039.png";
 
 const ExamList = () => {
   const [categories, setCategories] = useState([]);
@@ -127,10 +128,15 @@ const ExamList = () => {
                         Buy this Exam
                       </Link> */}
                       <button
-                        className="bg-green-500 text-white font-bold px-4 py-2 rounded-md hover:bg-green-600 transition-colors mt-4 w-[50%] text-center"
+                        className="flex items-center justify-center bg-[#E2116E] text-white font-bold px-4 py-2 rounded-md hover:bg-[#c20e5d] transition-colors mt-4 w-[50%] text-center relative"
                         onClick={() => pay(category.price, category._id)}
                       >
-                        Pay bkash
+                        <img
+                          src={bkash}
+                          alt="bkash"
+                          className="w-6 h-auto mr-2" // Adjust size and margin
+                        />
+                        Buy
                       </button>
                     </div>
                   )}
