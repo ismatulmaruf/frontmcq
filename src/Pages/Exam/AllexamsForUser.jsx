@@ -50,10 +50,10 @@ const ExamList = () => {
     fetchUserData();
   }, [catId]);
 
-  const handleBuyExam = (examId) => {
-    console.log(`Buy exam: ${examId}`);
-    // Implement your purchase logic here
-  };
+  // const handleBuyExam = (examId) => {
+  //   console.log(`Buy exam: ${examId}`);
+  //   // Implement your purchase logic here
+  // };
 
   return (
     <Layout>
