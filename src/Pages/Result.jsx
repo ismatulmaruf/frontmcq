@@ -90,34 +90,66 @@ const Result = () => {
             <span>{examData.title}</span>
           </h2>
 
+          {examData.AddmissionExam ? (
+            <p className="text-md sm:text-lg font-medium  dark:text-gray-100">
+              Score :{" "}
+              <span className="text-indigo-500">
+                {Object.keys(userExamResult.submittedAnswers).length -
+                  userExamResult.incorrectAnswersCount}{" "}
+                - {userExamResult.incorrectAnswersCount * 0.25} ={" "}
+                {userExamResult.score}
+              </span>
+            </p>
+          ) : (
+            <p className="text-md sm:text-lg font-medium dark:text-gray-100">
+              Score :{" "}
+              <span className="text-indigo-500">{userExamResult.score}</span>
+            </p>
+          )}
+
           <p className="text-md sm:text-lg font-medium dark:text-gray-100">
-            Score:{" "}
-            <span className="text-indigo-500">{userExamResult.score}</span> /{" "}
-            {examData.numberOfMCQs}
+            Total MCQ :{" "}
+            <span className="text-indigo-500">{examData.numberOfMCQs}</span>
           </p>
+
           <p className="text-md sm:text-lg font-medium dark:text-gray-100">
-            Unanswered:{" "}
+            Correct Answer :{" "}
             <span className="text-indigo-500">
-              {examData.numberOfMCQs -
-                Object.keys(userExamResult.submittedAnswers).length}
+              {Object.keys(userExamResult.submittedAnswers).length -
+                userExamResult.incorrectAnswersCount}
             </span>
           </p>
+
           {examData.AddmissionExam ? (
-            <p className="text-md sm:text-lg font-medium mb-4 sm:mb-6 dark:text-gray-100">
-              Incorrect Answer:{" "}
+            <p className="text-md sm:text-lg font-medium  dark:text-gray-100">
+              Negetive Marking :{" "}
               <span className="text-red-500">
                 {userExamResult.incorrectAnswersCount} * 0.25 ={" "}
                 {userExamResult.incorrectAnswersCount * 0.25}
               </span>
             </p>
           ) : (
-            <p className="text-md sm:text-lg font-medium mb-4 sm:mb-6">
-              Incorrect Answer:{" "}
+            <p className="text-md sm:text-lg font-medium ">
+              Incorrect Answer :{" "}
               <span className="text-red-500">
                 {userExamResult.incorrectAnswersCount}
               </span>
             </p>
           )}
+
+          <p className="text-md sm:text-lg font-medium dark:text-gray-100">
+            Answered :{" "}
+            <span className="text-indigo-500">
+              {Object.keys(userExamResult.submittedAnswers).length}
+            </span>
+          </p>
+          <p className="text-md sm:text-lg font-medium dark:text-gray-100">
+            Unanswered :{" "}
+            <span className="text-indigo-500">
+              {examData.numberOfMCQs -
+                Object.keys(userExamResult.submittedAnswers).length}
+            </span>
+          </p>
 
           <div className="mcqs space-y-4 sm:space-y-6">
             {examData.mcqs.map((mcq, index) => {
