@@ -37,7 +37,7 @@ export default function AdminDashboard() {
 
   const { allUsersCount, subscribedCount } = useSelector((state) => state.stat);
 
-  const { allPayments } = useSelector((state) => state.razorpay);
+  // const { allPayments } = useSelector((state) => state.razorpay);
   const monthlySalesRecord = [1, 3, 7, 8, 10, 0, 5];
 
   const userData = {
@@ -176,7 +176,8 @@ export default function AdminDashboard() {
                       Subscription Count
                     </p>
                     <h3 className="md:text-4xl text-xl font-inter font-bold">
-                      {allPayments?.count}
+                      {/* {allPayments?.count} */}
+                      1230{" "}
                     </h3>
                   </div>
                   <FcSalesPerformance className="text-yellow-500 text-5xl" />
@@ -189,7 +190,7 @@ export default function AdminDashboard() {
                       Total Revenue
                     </p>
                     <h3 className="md:text-4xl text-xl font-inter font-bold">
-                      {allPayments?.count * 499}
+                      {/* {allPayments?.count * 499} */}11000
                     </h3>
                   </div>
                   <GiMoneyStack className="text-green-500 text-5xl" />
