@@ -11,10 +11,8 @@ import ForgotPassword from "./Pages/Password/ForgotPassword";
 import ResetPassword from "./Pages/Password/ResetPassword";
 import AllexamsCatForUser from "./Pages/Exam/AllexamsCatForUser";
 import AllexamsForUser from "./Pages/Exam/AllexamsForUser";
-// import AllexamsForNonUser from "./Pages/Exam/AllexamsForNonUser";
 import Contact from "./Pages/Contact";
 import Denied from "./Pages/Denied";
-// import CourseDescription from "./Pages/adminExam/CourseDescription";
 
 import Error from "./Components/Error";
 import Success from "./Components/Success";
@@ -26,12 +24,8 @@ import Allusers from "./Pages/adminExam/Allusers";
 import AllExamCatAdmin from "./Pages/adminExam/AllExamCatAdmin";
 import Category from "./Pages/adminExam/Category";
 import Profile from "./Pages/User/Profile";
-import Checkout from "./Pages/Payment/Checkout";
 import CheckoutWP from "./Pages/Payment/CheckoutWP";
-import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
-import CheckoutFail from "./Pages/Payment/CheckoutFail";
 import AddMcq from "./Pages/Dashboard/DisplayLecture";
-// import AddLecture from "./Pages/Dashboard/AddLecture";
 import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
 import Exam from "./Pages/Exam";
 import Result from "./Pages/Result";
@@ -97,10 +91,6 @@ function App() {
           />
 
           <Route path="/buy/:price/:examname" element={<CheckoutWP />} />
-
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/checkout/success" element={<CheckoutSuccess />} />
-          <Route path="/checkout/fail" element={<CheckoutFail />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

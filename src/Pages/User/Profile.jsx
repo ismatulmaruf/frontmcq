@@ -7,7 +7,7 @@ import { IoIosLock, IoIosRefresh } from "react-icons/io";
 import { FiMoreVertical } from "react-icons/fi";
 import Layout from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
-import { cancelCourseBundle } from "../../Redux/Slices/RazorpaySlice";
+// import { cancelCourseBundle } from "../../Redux/Slices/RazorpaySlice";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -42,12 +42,12 @@ export default function Profile() {
     setIsUpdating(false);
   }
 
-  async function handleCancelSubscription() {
-    const res = await dispatch(cancelCourseBundle());
-    if (res?.payload?.success) {
-      await dispatch(getUserData());
-    }
-  }
+  // async function handleCancelSubscription() {
+  //   const res = await dispatch(cancelCourseBundle());
+  //   if (res?.payload?.success) {
+  //     await dispatch(getUserData());
+  //   }
+  // }
 
   useEffect(() => {
     setIschanged(
@@ -170,14 +170,14 @@ export default function Profile() {
               className="md:w-[48%] w-[100%]"
               disabled={true}
             />
-            <InputBox
+            {/* <InputBox
               label={"Subscription"}
               name={"subscription"}
               type={"text"}
               value={userData?.subscription?.status || "Not-Active"}
               className="md:w-[48%] w-[100%]"
               disabled={true}
-            />
+            /> */}
           </div>
 
           <div className="w-full flex md:flex-row flex-col md:justify-between justify-center md:gap-0 gap-3">
@@ -189,7 +189,7 @@ export default function Profile() {
               {isUpdating ? "Saving Changes..." : "Save Changes"}
             </button>
 
-            {userData?.subscription?.status === "active" && (
+            {/* {userData?.subscription?.status === "active" && (
               <button
                 type="button"
                 onClick={handleCancelSubscription}
@@ -197,7 +197,7 @@ export default function Profile() {
               >
                 Cancel Subscription
               </button>
-            )}
+            )} */}
           </div>
         </form>
       </section>
