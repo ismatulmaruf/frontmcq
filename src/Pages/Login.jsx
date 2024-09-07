@@ -91,10 +91,9 @@ export default function Login() {
             Do not have an account ?{" "}
             <Link
               to="/signup"
-              className="font-bold text-blue-600 font-lato cursor-pointer"
+              className="font-bold bg-yellow-500 text-blue-600 font-lato cursor-pointer transition-all duration-300 ease-in-out transform hover:bg-yellow-600 hover:text-white hover:shadow-lg hover:scale-105 focus:ring-4 focus:ring-yellow-300 focus:outline-none"
             >
-              {" "}
-              signup
+              Sign-Up
             </Link>
             {"   "}
             <br />
