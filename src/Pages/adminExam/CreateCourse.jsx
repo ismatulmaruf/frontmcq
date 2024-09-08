@@ -246,7 +246,7 @@ export default function CreateExam() {
                     <p>{exam.free ? "Free" : "Paid"}</p>
                   </div>
                 </div>
-                <div className="flex gap-3 mt-4">
+                <div className="grid grid-cols-2 gap-3 mt-4">
                   {(role == "ADMIN" || exam.createdBy == data.email) && (
                     <>
                       <button
