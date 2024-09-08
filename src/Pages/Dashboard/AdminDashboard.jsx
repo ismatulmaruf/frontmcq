@@ -81,7 +81,7 @@ export default function AdminDashboard() {
     ],
   };
 
-  const myCourses = useSelector((state) => state.course.coursesData);
+  // const myCourses = useSelector((state) => state.course.coursesData);
 
   async function onCourseDelete(id) {
     if (window.confirm("Are you sure you want to delete the course ? ")) {

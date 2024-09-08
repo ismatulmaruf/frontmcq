@@ -19,6 +19,7 @@ import Success from "./Components/Success";
 
 import RequireAuth from "./Components/auth/RequireAuth";
 import CreateExam from "./Pages/adminExam/CreateCourse";
+import Ranking from "./Pages/Exam/Ranking";
 import CatAccessDashboard from "./Pages/adminExam/CatAccessDashboard";
 import Allusers from "./Pages/adminExam/Allusers";
 import AllExamCatAdmin from "./Pages/adminExam/AllExamCatAdmin";
@@ -80,6 +81,8 @@ function App() {
         >
           <Route path="/allexamsCatForUser" element={<AllexamsCatForUser />} />
           <Route path="/allexamsForUser/:catId" element={<AllexamsForUser />} />
+
+          <Route path="/ranking/:examId" element={<Ranking />} />
 
           <Route path="/exam/:catId/:examId" element={<Exam />} />
           <Route path="/results/:catId/:examId" element={<Result />} />

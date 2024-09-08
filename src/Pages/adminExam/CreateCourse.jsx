@@ -270,6 +270,12 @@ export default function CreateExam() {
                       </button>
                     </>
                   )}
+                  <button
+                    onClick={() => navigate(`/ranking/${exam._id}`)}
+                    className="bg-purple-700 text-white px-5 py-2 font-bold rounded-lg shadow-md hover:bg-purple-600 hover:shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-1"
+                  >
+                    Ranking
+                  </button>
                 </div>
               </li>
             ))}
