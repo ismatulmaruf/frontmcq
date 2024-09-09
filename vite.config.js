@@ -20,7 +20,7 @@ export default defineConfig({
       manifest: {
         name: "MCQ",
         short_name: "Multiple Choice Question",
-        theme_color: "#000",
+        theme_color: "#000000",
         icons: [
           {
             src: "pwa-64x64.png",
