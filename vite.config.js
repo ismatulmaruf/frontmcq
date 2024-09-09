@@ -18,8 +18,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
       manifest: {
-        name: "Vite PWA Project",
-        short_name: "Vite PWA Project",
+        name: "MCQ",
+        short_name: "Multiple Choice Question",
         theme_color: "#ffffff",
         icons: [
           {
