@@ -16,10 +16,10 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.png"],
       manifest: {
         name: "MCQ",
-        short_name: "Multiple Choice Question",
+        short_name: "MCQ",
         theme_color: "#000000",
         icons: [
           {
