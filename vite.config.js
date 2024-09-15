@@ -16,11 +16,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.png"],
+      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
       manifest: {
         name: "MCQ",
         short_name: "MCQ",
-        theme_color: "#000000",
+        theme_color: "#ffffff",
         icons: [
           {
             src: "pwa-64x64.png",
